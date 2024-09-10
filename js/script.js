@@ -29,14 +29,21 @@ function showList(array) {
   const container = document.getElementById("list");
   container.innerHTML = "";
   // Más info de forEach => https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
-  array.forEach((element) => {
+ array.forEach((element) => {
     const li = document.createElement("li");
     li.appendChild(document.createTextNode(element));
     container.appendChild(li);
   });
 }
 
+
 document.addEventListener("DOMContentLoaded", (e) => {
-  // Escribe tu solución aquí
-  // Sugerencia de cómo mostrar el array => showList(strangeArray);
+  // Filtrar solo los elementos de tipo string y ordenarlos alfabéticamente
+  const filteredArray = strangeArray.filter(function(item) {
+    return typeof item === 'string';
+  }).sort(function(a, b) {
+    return a.toLowerCase().localeCompare(b.toLowerCase());
+  });
+  // Mostrar el array filtrado y ordenado
+  showList(filteredArray);
 });
